@@ -94,6 +94,7 @@ async function bored1() {
 
 function displaydata(a, b, d) {
     // console.log(a);
+    console.log(a.link, b.link, d.link);
 
     let html_data = `
         <div class="container">
@@ -107,44 +108,76 @@ function displaydata(a, b, d) {
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Pure jollity!<img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
+                        <h2 class="card-title text-center"><span style="text-transform: capitalize;">${a.type}</span><img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
                         src="https://media.tenor.com/VCYmMvyw7rIAAAAi/rabbit.gif" alt="dancing" /></h2>
-                        <p class="card-text">Activity : ${a.activity}</p>
-                        <p class="card-text">Type : ${a.type} </p>
+                        <p class="card-text">Activity : <strong>${a.activity}</strong></p>
                         <p class="card-text">Participants : ${a.participants} </p>
                         <p class="card-text">Price : ${a.price} </p>
+                        <div id="link1" class="card-text"> </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Lets do it <img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
+                        <h2 class="card-title text-center"><span style="text-transform: capitalize;">${b.type}</span><img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
                         src="https://media.tenor.com/5x4UmDjnty0AAAAi/dog-caramelldansen.gif" alt="dancing" /></h2>
-                        <p class="card-text">Activity : ${b.activity}</p>
-                        <p class="card-text">Type : ${b.type} </p>
+                        <p class="card-text">Activity : <strong>${b.activity}</strong></p>
                         <p class="card-text">Participants : ${b.participants} </p>
                         <p class="card-text">Price : ${b.price} </p>
+                        <div id="link2" class="card-text"></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title"><img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
-                        src="https://media.tenor.com/GQrYAgV37gkAAAAi/celebrating-dancing.gif" alt="dancing" />It's fun!!</h2>
-                        <p class="card-text">Activity : ${d.activity}</p>
-                        <p class="card-text">Type : ${d.type} </p>
+                        <h2 class="card-title text-center"><img width="50px" height="50px" class="img-fluid rounded mb-4 mb-lg-0"
+                        src="https://media.tenor.com/GQrYAgV37gkAAAAi/celebrating-dancing.gif" alt="dancing" /><span style="text-transform: capitalize;">${d.type}</span></h2>
+                        <p class="card-text">Activity : <strong>${d.activity}</strong></p>
                         <p class="card-text">Participants : ${d.participants} </p>
                         <p class="card-text">Price : ${d.price} </p>
+                        <div id="link3" class="card-text"> </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center"><a onclick="bored()" class="btn btn-secondary btn mb-5">Still bored?</a></div>
+            <div class="text-center"><a onclick="bored()" class="btn btn-secondary btn mb-5 mt-3">Still bored?</a></div>
         </div></div>
 
     `
+
+    // <a href="${a.link}" id="link1" class="card-text" target="_blank">Link : ${a.link} </a>
+    // <a href="${b.link}" id="link2" class="card-text" target="_blank">Link : ${b.link} </a>
+    // <a href="${d.link}" id="link3" class="card-text" target="_blank">Link : ${d.link} </a>
+    // link1 = document.getElementById('#link1')
+    // link2 = document.getElementById('#link2')
+    // link3 = document.getElementById('#link3')
+    // console.log(link1, link2, link3);
     result.innerHTML = html_data
     hide.style.display = "none";
+    if (a.link != "") {
+        var aTag = document.createElement('a');
+        aTag.setAttribute('href', a.link);
+        aTag.setAttribute('target', "_blank");
+        aTag.innerHTML = a.link;
+        document.getElementById("link1").appendChild(aTag);
+    }
+
+    if (b.link != "") {
+        var aTag = document.createElement('a');
+        aTag.setAttribute('href', b.link);
+        aTag.setAttribute('target', "_blank");
+        aTag.innerHTML = b.link;
+        document.getElementById("link2").appendChild(aTag);
+    }
+
+    if (d.link != "") {
+        var aTag = document.createElement('a');
+        aTag.setAttribute('href', d.link);
+        aTag.setAttribute('target', "_blank");
+        aTag.innerHTML = d.link;
+        document.getElementById("link3").appendChild(aTag);
+    }
+
 }
 
